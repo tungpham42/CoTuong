@@ -13,9 +13,10 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('phong', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->string('code')->unique();
             $table->string('fen');
+            $table->string('pass');
             $table->timestamp('modified_at')->nullable();
         });
     }
