@@ -1,0 +1,133 @@
+.highlight {
+  box-shadow: inset 0 0 3px 3px #6d5330;
+}
+#ban-co {
+  touch-action: none !important;
+  pointer-events: all;
+}
+#copy-url, #url {
+  cursor: pointer;
+}
+.side-color {
+  font-weight: bolder;
+  font-size: 42px;
+  text-align: center;
+  line-height: 1.2em;
+  display: block;
+  cursor: default !important;
+  &.red {
+    color: red;
+  }
+  &.black {
+    color: black;
+  }
+}
+#game-status {
+  background-color: antiquewhite !important;
+  padding: 12px 24px;
+  font-weight: bolder;
+  border-width: 2px;
+  border-style: solid;
+  cursor: default !important;
+  &.red {
+    color: red;
+    border-color: red;
+  }
+  &.black {
+    color: black;
+    border-color: black;
+  }
+  &:hover {
+    color: antiquewhite;
+    &.red {
+      background-color: red !important;
+      border-color: red;
+    }
+    &.black {
+      background-color: black !important;
+      border-color: black;
+    }
+  }
+}
+#game-over {
+  color: darkslategrey;
+  border-width: 1px;
+  border-style: solid;
+  border-color: darkslategrey;
+  padding: 12px 24px;
+  background-color: whitesmoke;
+  font-weight: bolder;
+  cursor: default !important;
+  &:hover {
+    color: whitesmoke;
+    border-color: darkslategrey;
+    background-color: darkslategrey;
+  }
+}
+#room-code {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: $font-family-base;
+}
+.table {
+  td, th {
+    vertical-align: middle !important;
+  }
+  td.text-left {
+    a {
+      color: $c-base !important;
+      font-family: $font-family-mono;
+    }
+    span {
+      padding: 4px 7px 5px;
+    }
+  }
+}
+ul#credit {
+  color: $c-base !important;
+  li {
+    color: $c-base !important;
+    a {
+      color: $c-base !important;
+      font-weight: bolder;
+    }
+  }
+}
+@media (max-width: 991px) {
+  #ban-co, #copy-url, #change-pass {
+    width: 100% !important;
+  }
+  .btn.w-25 {
+    width: 49% !important;
+    font-size: 12px !important;
+  }
+  .btn.w-25.btn-success {
+    width: 75% !important;
+  }
+  .h3, h3 {
+    font-size: 1rem !important;
+  }
+  h2 {
+    font-size: 1.2rem !important;
+  }
+}
+/* PULSE ANIMATION */
+.pulse {
+	position: relative;
+	box-shadow: 0 0 0 0 rgba(33, 136, 56, 0.84);
+	cursor: pointer;
+	-webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+	-moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+	-ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+	animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.pulse:hover {
+	-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
+//end

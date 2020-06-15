@@ -1,0 +1,89 @@
+/*!
+* xiangqiboard.js $version$
+*
+* Copyright 2013 Chris Oakman
+* Copyright 2018 @lengyanyu258
+* Released under the MIT license
+* https://github.com/lengyanyu258/xiangqiboardjs/blob/master/LICENSE
+*
+* Date: $date$
+*/
+
+.clearfix-5f3b5 {
+    clear: both;
+}
+
+.board-1ef78 {
+    box-sizing: content-box;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.42) !important;
+    pointer-events: none !important;
+}
+
+.xiangqiboard-8ddcb {
+    pointer-events: none !important;
+}
+
+.square-2b8ce {
+    float: left;
+    position: relative;
+
+    /* disable any native browser highlighting */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none !important;
+    img {
+        filter: drop-shadow(0 0 1px gray);
+        pointer-events: all !important;
+    }
+    &:hover, &:active, &:focus {
+        img {
+            filter: drop-shadow(0 0 1px black);
+        }
+    }
+    &:hover {
+        img {
+            cursor: pointer;
+        }
+    }
+    /*
+    &:active {
+        img {
+            cursor: grab;
+            cursor: -moz-grab;
+            cursor: -webkit-grab;
+        }
+    }
+    &:focus {
+        img {
+            cursor: grabbing;
+            cursor: -moz-grabbing;
+            cursor: -webkit-grabbing;
+        }
+    }
+    */
+}
+
+.highlight1-e13fc, .highlight2-e0a03 {
+    box-shadow: inset 0 0 3px 3px goldenrod;
+}
+
+.notation-8c7a2 {
+    cursor: default;
+    font-family: $font-family-base;
+    font-size: 14px;
+    position: absolute;
+}
+
+.alpha-f4ef2 {
+    bottom: 1px;
+    right: 40%;
+}
+
+.numeric-fe76e {
+    top: 40%;
+    left: 1px;
+}
