@@ -28,6 +28,6 @@ class CreateRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phong');
+        Schema::dropIfExists('rooms');
     }
 }
