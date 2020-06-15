@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 
-$url = parse_url(getenv("DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $host = $url["host"];
 $username = $url["user"];
@@ -21,7 +21,7 @@ return [
     |
     */
 
-    'default' => 'pgsql',
+    'default' => 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
             'database' => $database,
             'username' => $username,
             'password' => $password,
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
