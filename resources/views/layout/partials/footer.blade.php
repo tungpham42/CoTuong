@@ -18,9 +18,6 @@
             <a class="about" href="{{ url('/gioi-thieu') }}">Giới thiệu</a>
           </li>
           <li>
-            <a class="contact" href="{{ url('/lien-he') }}">Liên hệ</a>
-          </li>
-          <li>
             <a class="lang" href="{{ url($langUrl) }}">English</a>
           </li>
         </ul>

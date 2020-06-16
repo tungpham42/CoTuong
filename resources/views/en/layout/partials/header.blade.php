@@ -15,9 +15,6 @@
             <a class="about" href="{{ url('/about-us') }}">About Us</a>
           </li>
           <li class="pt-4">
-            <a class="contact" href="{{ url('/contact-us') }}">Contact Us</a>
-          </li>
-          <li class="pt-4">
             <a class="lang" href="{{ url($langUrl) }}">Tiếng Việt</a>
         </ul>
       </nav>
