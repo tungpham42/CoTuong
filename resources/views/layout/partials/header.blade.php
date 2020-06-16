@@ -18,9 +18,6 @@
             <a class="contact" href="{{ url('/lien-he') }}">Liên hệ</a>
           </li>
           <li class="pt-4">
-            <a class="blog" href="{{ url('/blog') }}">Blog</a>
-          </li>
-          <li class="pt-4">
             <a class="lang" href="{{ url($langUrl) }}">English</a>
           </li>
         </ul>
