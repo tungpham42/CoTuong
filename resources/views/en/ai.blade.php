@@ -1,6 +1,18 @@
 @extends('en.layout.gamelayout')
 @section('aboveContent')
 <h3 class="text-center my-2">Playing with AI</h3>
+<h4 class="text-center my-2">Level: {{ $levelTxt }}</h4>
+<div class="dropdown mx-auto text-center">
+  <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="levelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Choose level
+  </button>
+  <div class="dropdown-menu" aria-labelledby="levelDropdown">
+    <a class="dropdown-item" href="{{ url('/play-with-ai/easiest') }}">Easiest</a>
+    <a class="dropdown-item" href="{{ url('/play-with-ai/easy') }}">Easy</a>
+    <a class="dropdown-item" href="{{ url('/play-with-ai/normal') }}">Normal</a>
+    <a class="dropdown-item" href="{{ url('/play-with-ai/hard') }}">Hard</a>
+  </div>
+</div>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
@@ -22,11 +34,115 @@ function greySquare (square) {
 }
 
 function onDragStart (source, piece, position, orientation) {
-  // do not pick up pieces if the game is over
-  if (game.game_over()) return false;
+  if (game.in_checkmate() === true || game.in_draw() === true || piece.search(/^b/) !== -1) {
+    return false;
+  }
+}
 
-  // only pick up pieces for Red
-  if (piece.search(/^b/) !== -1) return false;
+function minimaxRoot(depth, game, isMaximisingPlayer) {
+  var newGameMoves = game.ugly_moves();
+  var bestMove = -9999;
+  var bestMoveFound;
+
+  for(var i = 0; i < newGameMoves.length; i++) {
+    var newGameMove = newGameMoves[i]
+    game.ugly_move(newGameMove);
+    var value = minimax(depth - 1, game, -10000, 10000, !isMaximisingPlayer);
+    game.undo();
+    if(value >= bestMove) {
+      bestMove = value;
+      bestMoveFound = newGameMove;
+    }
+  }
+  return bestMoveFound;
+}
+
+function minimax(depth, game, alpha, beta, isMaximisingPlayer) {
+  positionCount++;
+  if (depth === 0) {
+    return -evaluateBoard(game.board());
+  }
+
+  var newGameMoves = game.ugly_moves();
+
+  if (isMaximisingPlayer) {
+    var bestMove = -9999;
+    for (var i = 0; i < newGameMoves.length; i++) {
+      game.ugly_move(newGameMoves[i]);
+      bestMove = Math.max(bestMove, minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
+      game.undo();
+      alpha = Math.max(alpha, bestMove);
+      if (beta <= alpha) {
+        return bestMove;
+      }
+    }
+    return bestMove;
+  } else {
+    var bestMove = 9999;
+    for (var i = 0; i < newGameMoves.length; i++) {
+      game.ugly_move(newGameMoves[i]);
+      bestMove = Math.min(bestMove, minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
+      game.undo();
+      beta = Math.min(beta, bestMove);
+      if (beta <= alpha) {
+        return bestMove;
+      }
+    }
+    return bestMove;
+  }
+}
+
+function evaluateBoard(board) {
+  var totalEvaluation = 0;
+  for (var i = 0; i < 8; i++) {
+    for (var j = 0; j < 8; j++) {
+      totalEvaluation = totalEvaluation + getPieceValue(board[i][j]);
+    }
+  }
+  return totalEvaluation;
+}
+
+function getPieceValue(piece) {
+  if (piece === null) {
+    return 0;
+  }
+  var getAbsoluteValue = function (piece) {
+    if (piece.type === 'p') {
+      return 10;
+    } else if (piece.type === 'r') {
+      return 90;
+    } else if (piece.type === 'n') {
+      return 50;
+    } else if (piece.type === 'b') {
+      return 30 ;
+    } else if (piece.type === 'a') {
+      return 20;
+    } else if (piece.type === 'c') {
+      return 70;
+    } else if (piece.type === 'k') {
+      return 900;
+    }
+    throw "Unknown piece type: " + piece.type;
+  };
+
+  var absoluteValue = getAbsoluteValue(piece, piece.color === 'r');
+  return piece.color === 'r' ? absoluteValue : -absoluteValue;
+}
+
+function makeBestMove() {
+  var bestMove = getBestMove(game);
+  game.ugly_move(bestMove);
+  board.position(game.fen());
+  updateStatus();
+}
+
+var positionCount;
+function getBestMove(game) {
+  updateStatus();
+  positionCount = 0;
+  var depth = {{ $level }};
+  var bestMove = minimaxRoot(depth, game, true);
+  return bestMove;
 }
 
 function makeRandomMove () {
@@ -53,7 +169,8 @@ function onDrop (source, target) {
   if (move === null) return 'snapback';
   updateStatus();
   // make random legal move for black
-  window.setTimeout(makeRandomMove, 250);
+  //window.setTimeout(makeRandomMove, 250);
+  window.setTimeout(makeBestMove, 250);
 }
 
 function onMouseoverSquare (square, piece) {
