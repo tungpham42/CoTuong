@@ -5,7 +5,7 @@
       <p>Có 3 chế độ: Chơi với nhau, Chơi với máy và Chơi trong phòng</p>
       <ol>
         <li><u>Chơi với nhau:</u> Người dùng chơi ngay trên trang chủ.</li>
-        <li><u>Chơi với máy:</u> Người dùng ấn vào nút <a target="_blank" href="{{ URL::to('/choi-voi-may') }}">"CHƠI VỚI MÁY"</a> trên trang chủ và bắt đầu luyện tập với máy.</li>
+        <li><u>Chơi với máy:</u> Người dùng ấn vào nút <a target="_blank" href="{{ URL::to('/') }}">"CHƠI VỚI MÁY"</a> trên trang chủ và bắt đầu luyện tập với máy. Có 4 cấp độ: <a target="_blank" href="{{ url('/moi-choi') }}">Mới chơi</a>, <a target="_blank" href="{{ url('/de') }}">Dễ</a>, <a target="_blank" href="{{ url('/binh-thuong') }}">Bình thường</a>, <a target="_blank" href="{{ url('/kho') }}">Khó</a>.</li>
         <li><u>Chơi trong phòng:</u> Người dùng ấn vào nút "TẠO PHÒNG MỚI", mở một phòng mới với Mã phòng bất kỳ và tạo một Mật khẩu chỉ có bạn biết thôi, đồng thời có thể Mời bạn bè vào chơi qua đường link. Người dùng cũng có thể vào trang <a target="_blank" href="{{ URL::to('/danh-sach-phong') }}">"Danh sách phòng"</a> để truy cập vào 1 phòng có sẵn. Trong trang này người dùng có thể lựa chọn Quân Đỏ hoặc Quân Đen. Quân Đỏ đi trước.</li>
       </ol>
     </div>

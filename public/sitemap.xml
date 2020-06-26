@@ -8,52 +8,112 @@
 
 
 <url>
-  <loc>https://cotuong.top/</loc>
+  <loc>https://cotuongvn.herokuapp.com/choi-voi-nhau</loc>
   <lastmod>2020-02-21T23:15:28+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/danh-sach-phong</loc>
+  <loc>https://cotuongvn.herokuapp.com/danh-sach-phong</loc>
   <lastmod>2020-02-21T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/gioi-thieu</loc>
+  <loc>https://cotuongvn.herokuapp.com/gioi-thieu</loc>
   <lastmod>2020-02-21T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/lien-he</loc>
+  <loc>https://cotuongvn.herokuapp.com/lien-he</loc>
   <lastmod>2020-02-21T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/choi-voi-may</loc>
+  <loc>https://cotuongvn.herokuapp.com/</loc>
   <lastmod>2020-02-21T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/en</loc>
+  <loc>https://cotuongvn.herokuapp.com/de-nhat</loc>
+  <lastmod>2020-02-21T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/moi-choi</loc>
+  <lastmod>2020-02-21T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/de</loc>
+  <lastmod>2020-02-21T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/binh-thuong</loc>
+  <lastmod>2020-02-21T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/kho</loc>
+  <lastmod>2020-02-21T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/kho-nhat</loc>
+  <lastmod>2020-02-21T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/en</loc>
   <lastmod>2020-04-19T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/rooms</loc>
+  <loc>https://cotuongvn.herokuapp.com/rooms</loc>
   <lastmod>2020-04-19T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/about-us</loc>
+  <loc>https://cotuongvn.herokuapp.com/about-us</loc>
   <lastmod>2020-04-19T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/contact-us</loc>
+  <loc>https://cotuongvn.herokuapp.com/contact-us</loc>
   <lastmod>2020-04-19T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cotuong.top/play-with-ai</loc>
+  <loc>https://cotuongvn.herokuapp.com/play-with-friend</loc>
+  <lastmod>2020-04-19T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/easiest</loc>
+  <lastmod>2020-04-19T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/newbie</loc>
+  <lastmod>2020-04-19T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/easy</loc>
+  <lastmod>2020-04-19T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/normal</loc>
+  <lastmod>2020-04-19T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/hard</loc>
+  <lastmod>2020-04-19T23:15:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cotuongvn.herokuapp.com/hardest</loc>
   <lastmod>2020-04-19T23:15:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>

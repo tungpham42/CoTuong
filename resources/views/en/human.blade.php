@@ -4,7 +4,7 @@
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/play-with-ai') }}"><i class="fad fa-desktop"></i> Play with AI</a>
+  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/en') }}"><i class="fad fa-desktop"></i> Play with AI</a>
   <a id="reset" class="w-25 btn btn-danger btn-lg"><i class="fad fa-redo-alt"></i> Restart</a>
 </p>
 <script>

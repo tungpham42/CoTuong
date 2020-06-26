@@ -4,19 +4,19 @@
 <h4 class="text-center my-2">Cấp độ: {{ $levelTxt }}</h4>
 <div class="dropdown mx-auto text-center">
   <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="levelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Chọn cấp độ
+    <i class="fal fa-trophy"></i> Chọn cấp độ
   </button>
   <div class="dropdown-menu" aria-labelledby="levelDropdown">
-    <a class="dropdown-item" href="{{ url('/choi-voi-may/de-nhat') }}">Dễ nhất</a>
-    <a class="dropdown-item" href="{{ url('/choi-voi-may/de') }}">Dễ</a>
-    <a class="dropdown-item" href="{{ url('/choi-voi-may/binh-thuong') }}">Bình thường</a>
-    <a class="dropdown-item" href="{{ url('/choi-voi-may/kho') }}">Khó</a>
+    <a class="dropdown-item" href="{{ url('/moi-choi') }}">Mới chơi</a>
+    <a class="dropdown-item" href="{{ url('/de') }}">Dễ</a>
+    <a class="dropdown-item" href="{{ url('/binh-thuong') }}">Bình thường</a>
+    <a class="dropdown-item" href="{{ url('/kho') }}">Khó</a>
   </div>
 </div>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/') }}"><i class="fad fa-user"></i> Chơi với nhau</a>
+  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/choi-voi-nhau') }}"><i class="fad fa-user"></i> Chơi với nhau</a>
   <a id="reset" class="w-25 btn btn-danger btn-lg"><i class="fad fa-redo-alt"></i> Chơi lại</a>
 </p>
 <script>
@@ -112,13 +112,13 @@ function getPieceValue(piece) {
     } else if (piece.type === 'r') {
       return 90;
     } else if (piece.type === 'n') {
-      return 50;
+      return 70;
     } else if (piece.type === 'b') {
       return 30 ;
     } else if (piece.type === 'a') {
       return 20;
     } else if (piece.type === 'c') {
-      return 70;
+      return 50;
     } else if (piece.type === 'k') {
       return 900;
     }
@@ -133,6 +133,7 @@ function makeBestMove() {
   var bestMove = getBestMove(game);
   game.ugly_move(bestMove);
   board.position(game.fen());
+  nuocCo.play();
   updateStatus();
 }
 
@@ -201,10 +202,6 @@ function onSnapEnd () {
   board.position(game.fen());
   nuocCo.play();
   updateStatus();
-  if (game.game_over()) {
-    hetTran.play();
-    $('#game-over').removeClass('d-none').addClass('d-inline-block');
-  }
 }
 function updateStatus () {
   var status = ''
@@ -239,6 +236,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  if (game.game_over()) {
+    hetTran.play();
+    $('#game-over').removeClass('d-none').addClass('d-inline-block');
+  }
 }
 let config = {
   draggable: true,

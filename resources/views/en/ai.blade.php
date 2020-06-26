@@ -4,19 +4,19 @@
 <h4 class="text-center my-2">Level: {{ $levelTxt }}</h4>
 <div class="dropdown mx-auto text-center">
   <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="levelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Choose level
+    <i class="fal fa-trophy"></i> Choose level
   </button>
   <div class="dropdown-menu" aria-labelledby="levelDropdown">
-    <a class="dropdown-item" href="{{ url('/play-with-ai/easiest') }}">Easiest</a>
-    <a class="dropdown-item" href="{{ url('/play-with-ai/easy') }}">Easy</a>
-    <a class="dropdown-item" href="{{ url('/play-with-ai/normal') }}">Normal</a>
-    <a class="dropdown-item" href="{{ url('/play-with-ai/hard') }}">Hard</a>
+    <a class="dropdown-item" href="{{ url('/newbie') }}">Newbie</a>
+    <a class="dropdown-item" href="{{ url('/easy') }}">Easy</a>
+    <a class="dropdown-item" href="{{ url('/normal') }}">Normal</a>
+    <a class="dropdown-item" href="{{ url('/hard') }}">Hard</a>
   </div>
 </div>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/en') }}"><i class="fad fa-user"></i> Play with friend</a>
+  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/play-with-friend') }}"><i class="fad fa-user"></i> Play with friend</a>
   <a id="reset" class="w-25 btn btn-danger btn-lg"><i class="fad fa-redo-alt"></i> Restart</a>
 </p>
 <script>
@@ -112,13 +112,13 @@ function getPieceValue(piece) {
     } else if (piece.type === 'r') {
       return 90;
     } else if (piece.type === 'n') {
-      return 50;
+      return 70;
     } else if (piece.type === 'b') {
       return 30 ;
     } else if (piece.type === 'a') {
       return 20;
     } else if (piece.type === 'c') {
-      return 70;
+      return 50;
     } else if (piece.type === 'k') {
       return 900;
     }
@@ -133,6 +133,7 @@ function makeBestMove() {
   var bestMove = getBestMove(game);
   game.ugly_move(bestMove);
   board.position(game.fen());
+  nuocCo.play();
   updateStatus();
 }
 
@@ -201,10 +202,6 @@ function onSnapEnd () {
   board.position(game.fen());
   nuocCo.play();
   updateStatus();
-  if (game.game_over()) {
-    hetTran.play();
-    $('#game-over').removeClass('d-none').addClass('d-inline-block');
-  }
 }
 function updateStatus () {
   var status = ''
@@ -239,6 +236,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  if (game.game_over()) {
+    hetTran.play();
+    $('#game-over').removeClass('d-none').addClass('d-inline-block');
+  }
 }
 let config = {
   draggable: true,
