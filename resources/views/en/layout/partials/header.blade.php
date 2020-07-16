@@ -15,13 +15,10 @@
             <a class="about" href="{{ url('/about-us') }}">About Us</a>
           </li>
           <li class="pt-4">
-            <a class="contact" href="{{ url('/contact-us') }}">Contact Us</a>
-          </li>
-          <li class="pt-4">
-            <a class="blog" href="{{ url('/blog') }}">Blog</a>
-          </li>
-          <li class="pt-4">
             <a class="lang" href="{{ url($langUrl) }}">Tiếng Việt</a>
+          </li>
+          <li class="pt-4">
+            <a target="_blank" class="buy" href="https://www.codester.com/items/24223/xiangqi-game-with-ai-and-room-hosting?ref=tungpham"><i class="fal fa-usd-circle"></i> BUY</a>
           </li>
         </ul>
       </nav>
