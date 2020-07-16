@@ -18,9 +18,6 @@
   </div>
   <input type="text" class="form-control" id="url" aria-describedby="url-addon" value="{{ url('/') }}/phong/{{ $roomCode }}/duoc-moi" />
 </div>
-<p class="w-100 text-center mt-2">
-  <span class="side-color red">QUÂN ĐỎ</span>
-</p>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
@@ -245,6 +242,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  $('#header-status').html(': '+status);
+  if (game.game_over()) {
+    $('#header-status').html(': '+status+' - Hết trận');
+  }
 }
 let config = {
   draggable: true,

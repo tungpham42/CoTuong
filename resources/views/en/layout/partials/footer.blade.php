@@ -18,7 +18,16 @@
             <a class="about" href="{{ url('/about-us') }}">About Us</a>
           </li>
           <li>
+            <a class="contact" href="{{ url('/contact-us') }}">Contact Us</a>
+          </li>
+          <li>
+            <a class="blog" href="{{ url('/blog') }}">Blog</a>
+          </li>
+          <li>
             <a class="lang" href="{{ $langUrl }}">Tiếng Việt</a>
+          </li>
+          <li>
+            <a target="_blank" class="buy" href="https://www.codester.com/items/24223/xiangqi-game-with-ai-and-room-hosting?ref=tungpham"><i class="fal fa-usd-circle"></i> BUY</a>
           </li>
         </ul>
       </div>
@@ -37,7 +46,7 @@
   </div>
 </footer>
 <div class="modal fade" id="AdBlockModal" tabindex="-1" role="dialog" aria-label="AdBlock" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content shadow-lg">
       <div class="modal-header">
         <h5 class="modal-title">AdBlock detected</h5>
@@ -47,6 +56,24 @@
       </div>
       <div class="modal-body">
         <p>Sure, ad-blocking software does a great job at blocking ads, but it also blocks some useful and important features of our website. For the best possible site experience please take a moment to disable your AdBlocker.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="AdSenseModal" tabindex="-1" role="dialog" aria-label="AdSense" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content shadow-lg">
+      <div class="modal-header">
+        <h5 class="modal-title">Ads</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <a target="_blank" href="https://nhanhoa.com/may-chu/may-chu-ao-vps.html?aff=5305"><img src="https://nhanhoa.com/uploads/aff/vps/300x250.png" title="Đăng ký Cloud VPS"></a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -70,7 +97,9 @@ function adBlockNotDetected() {
 function adBlockDetected() {
   $('#AdBlockModal').modal();
 }
-
+$('#AdSenseModal').on('hide.bs.modal', function(e) {
+  window.location.href = $('#tao-phong').attr('data-url');
+})
 // Recommended audit because AdBlock lock the file 'blockadblock.js' 
 // If the file is not called, the variable does not exist 'blockAdBlock'
 // This means that AdBlock is present

@@ -1,8 +1,7 @@
 <div class="container-fluid adsense px-0 border-top">
-  <div class="container mx-auto px-0">
-    <div class="row w-100 mx-auto py-5 px-0">
+  <div class="container mx-auto p-5">
+    <div class="row w-100 mx-auto">
       <div class="mb-4 col-12 px-0">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- CO_res -->
         <ins class="adsbygoogle"
             style="display:block"

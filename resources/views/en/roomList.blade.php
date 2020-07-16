@@ -22,7 +22,7 @@
   @for ($i = 0; $i < count($rooms); ++$i)
           <tr>
             <td class="text-center" data-sort-method="none">{{$i + 1}}</td>
-            <td class="text-left"><a href="/room/{{ $rooms[$i]['code'] }}">{{ $rooms[$i]['code'] }}</a></td>
+            <td class="text-left"><a href="/room/{{ $rooms[$i]['code'] }}">{{ $rooms[$i]['code'] }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-key text-danger" data-toggle="tooltip" data-placement="bottom" data-original-title="{{ $rooms[$i]['pass'] }}"></i></td>
             <td class="text-center">
             @if ($rooms[$i]['fen'] == 'rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1')
               <span class="badge badge-pill badge-danger">new</span>

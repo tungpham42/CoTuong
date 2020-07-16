@@ -5,7 +5,6 @@
 </p>
 <p class="w-100 text-center mt-2">
   <span class="alert alert-success d-inline-block" role="alert">Đã được mời</span>
-  <span class="side-color black">QUÂN ĐEN</span>
 </p>
 @endsection
 @section('belowContent')
@@ -207,6 +206,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  $('#header-status').html(': '+status);
+  if (game.game_over()) {
+    $('#header-status').html(': '+status+' - Hết trận');
+  }
 }
 let config = {
   draggable: true,

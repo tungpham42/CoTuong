@@ -1,7 +1,7 @@
 <header class="site-header shadow-lg fixed-top">
   <div class="container mx-auto">
     <div class="row align-items-center">
-      <a class="navbar-brand mr-auto my-0" href="{{ url('/en') }}"><img src="{{ URL::to('/') }}/img/app-icons/logo.png" class="xiangqi-logo" alt="xiangqi logo"><span>Xiangqi</span></a>
+      <a class="navbar-brand mr-auto my-0" href="{{ url('/en') }}"><img src="{{ URL::to('/') }}/img/app-icons/logo.png" class="xiangqi-logo" alt="xiangqi logo"><span>Xiangqi</span><span id="header-status"></span></a>
       <div class="menu-toggle open" title="Trình đơn"></div>
       <nav class="navbar py-0">
         <ul class="nav navbar-nav">
@@ -15,7 +15,14 @@
             <a class="about" href="{{ url('/about-us') }}">About Us</a>
           </li>
           <li class="pt-4">
+            <a class="contact" href="{{ url('/contact-us') }}">Contact Us</a>
+          </li>
+          <li class="pt-4">
+            <a class="blog" href="{{ url('/blog') }}">Blog</a>
+          </li>
+          <li class="pt-4">
             <a class="lang" href="{{ url($langUrl) }}">Tiếng Việt</a>
+          </li>
         </ul>
       </nav>
     </div>

@@ -2,7 +2,7 @@
 @section('aboveContent')
 <h3 class="text-center my-2">Playing with AI</h3>
 <h4 class="text-center my-2">Level: {{ $levelTxt }}</h4>
-<div class="dropdown mx-auto text-center">
+<div class="dropup mx-auto text-center">
   <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="levelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fal fa-trophy"></i> Choose level
   </button>
@@ -223,7 +223,7 @@ function updateStatus () {
 
   // game still on
   else {
-    status = moveColor + ' to move'
+    status = moveColor + "'s turn to move"
 
     // check?
     if (game.in_check()) {
@@ -236,8 +236,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  $('#header-status').html(': '+status);
   if (game.game_over()) {
     hetTran.play();
+    $('#header-status').html(': '+status+' - Game over');
     $('#game-over').removeClass('d-none').addClass('d-inline-block');
   }
 }

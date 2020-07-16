@@ -3,9 +3,6 @@
 <p id="room-code" class="w-100 text-center mt-2">
   <span class="alert alert-info d-inline-block" role="alert" data-toggle="tooltip" data-placement="bottom" data-original-title="Ghi nhớ mã phòng này nhé"><i class="fad fa-trophy-alt"></i> Mã phòng: {{ $roomCode }}</span>
 </p>
-<p class="w-100 text-center mt-2">
-  <span class="side-color red">QUÂN ĐỎ</span>
-</p>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
@@ -206,6 +203,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  $('#header-status').html(': '+status);
+  if (game.game_over()) {
+    $('#header-status').html(': '+status+' - Hết trận');
+  }
 }
 let config = {
   draggable: true,

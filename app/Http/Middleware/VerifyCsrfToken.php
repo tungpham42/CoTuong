@@ -12,6 +12,11 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/createRoom',
+        '/changePass',
+        '/doiPass',
+        '/processMail',
+        '/xulyMail',
+        '/updateFEN'
     ];
 }

@@ -138,6 +138,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  $('#header-status').html(': '+status);
+  if (game.game_over()) {
+    $('#header-status').html(': '+status+' - Hết trận');
+  }
 }
 let config = {
   draggable: true,

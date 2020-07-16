@@ -5,7 +5,6 @@
 </p>
 <p class="w-100 text-center mt-2">
   <span class="alert alert-success d-inline-block" role="alert">Invited</span>
-  <span class="side-color black">BLACK</span>
 </p>
 @endsection
 @section('belowContent')
@@ -191,7 +190,7 @@ function updateStatus () {
 
   // game still on
   else {
-    status = moveColor + ' to move'
+    status = moveColor + "'s turn to move"
 
     // check?
     if (game.in_check()) {
@@ -204,6 +203,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  $('#header-status').html(': '+status);
+  if (game.game_over()) {
+    $('#header-status').html(': '+status+' - Game over');
+  }
 }
 let config = {
   draggable: true,

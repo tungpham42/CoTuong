@@ -18,9 +18,6 @@
   </div>
   <input type="text" class="form-control" id="url" aria-describedby="url-addon" value="{{ url('/') }}/room/{{ $roomCode }}/invited" />
 </div>
-<p class="w-100 text-center mt-2">
-  <span class="side-color red">RED</span>
-</p>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
@@ -31,7 +28,7 @@
 function validateForm() {
   document.getElementById('status').innerHTML = "Processing...";
   formData = {
-    'room-code': '{{ $roomCode }}',
+    'ma-phong': '{{ $roomCode }}',
     'pass': $('#inputPassword').val()
   };
   $.ajax({
@@ -229,7 +226,7 @@ function updateStatus () {
 
   // game still on
   else {
-    status = moveColor + ' to move'
+    status = moveColor + "'s turn to move"
 
     // check?
     if (game.in_check()) {
@@ -242,6 +239,10 @@ function updateStatus () {
     $('#game-status').removeClass('red').addClass('black');
   }
   $('#game-status').html(status);
+  $('#header-status').html(': '+status);
+  if (game.game_over()) {
+    $('#header-status').html(': '+status+' - Game over');
+  }
 }
 let config = {
   draggable: true,

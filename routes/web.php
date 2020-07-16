@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/choi-voi-nhau', function () {
-    return view('human', ['headTitle' => 'Chơi với nhau', 'bodyClass' => 'home', 'roomCode' => '', 'langUrl' => '/en']);
+    return view('human', ['headTitle' => 'Chơi với nhau', 'bodyClass' => 'home', 'roomCode' => '', 'langUrl' => '/play-with-friend']);
 });
 Route::get('/play-with-friend', function () {
-    return view('en/human', ['headTitle' => 'Play with friend', 'bodyClass' => 'home', 'roomCode' => '', 'langUrl' => '/']);
+    return view('en/human', ['headTitle' => 'Play with friend', 'bodyClass' => 'home', 'roomCode' => '', 'langUrl' => '/choi-voi-nhau']);
 });
 Route::get('/', function () {
   return view('ai', ['headTitle' => 'Chơi', 'bodyClass' => 'home', 'roomCode' => '', 'langUrl' => '/en', 'level' => '3', 'levelTxt' => 'Bình thường']);
