@@ -9,13 +9,13 @@
       <div class="container-fluid game px-0" itemscope itemtype="http://schema.org/Game">
         <div class="container {{ url()->current() == URL::to('/amp/set-up/') ? 'px-3 pb-0 pt-3' : 'p-3' }}">
           <audio id="nuoc-co">
-            <source src="https://cotuong.r.worldssl.net/sound/nuocCo.mp3" type="audio/mpeg">
-            <source src="https://cotuong.r.worldssl.net/sound/nuocCo.wav" type="audio/wav">
+            <source src="{{ URL::to('/') }}/sound/nuocCo.mp3" type="audio/mpeg">
+            <source src="{{ URL::to('/') }}/sound/nuocCo.wav" type="audio/wav">
             Your browser does not support the audio element.
           </audio>
           <audio id="het-tran">
-            <source src="https://cotuong.r.worldssl.net/sound/hetTran.mp3" type="audio/mpeg">
-            <source src="https://cotuong.r.worldssl.net/sound/hetTran.wav" type="audio/wav">
+            <source src="{{ URL::to('/') }}/sound/hetTran.mp3" type="audio/mpeg">
+            <source src="{{ URL::to('/') }}/sound/hetTran.wav" type="audio/wav">
             Your browser does not support the audio element.
           </audio>
           @if ( url()->current() == URL::to('/amp/set-up/') )

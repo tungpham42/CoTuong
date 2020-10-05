@@ -6,10 +6,10 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js" integrity="sha256-sfG8c9ILUB8EXQ5muswfjZsKICbRIJUG/kBogvvV5sY=" crossorigin="anonymous"></script>
-<script src="https://cotuong.r.worldssl.net/js/scripts.js"></script>
-<script src="https://cotuong.r.worldssl.net/js/manipulation.js"></script>
-<script src="https://cotuong.r.worldssl.net/js/xiangqiboard.js?v=6"></script>
-<script src="https://cotuong.r.worldssl.net/js/xiangqi.js?v=33"></script>
+<script src="{{ URL::to('/') }}/js/scripts.js"></script>
+<script src="{{ URL::to('/') }}/js/manipulation.js"></script>
+<script src="{{ URL::to('/') }}/js/xiangqiboard.js?v=6"></script>
+<script src="{{ URL::to('/') }}/js/xiangqi.js?v=33"></script>
 <script>
 $.ajaxSetup({
   headers: {
