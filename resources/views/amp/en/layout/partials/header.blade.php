@@ -15,12 +15,6 @@
             <a class="setup" href="{{ url('/amp/set-up') }}">Set Up</a>
           </li>
           <li class="pt-4">
-            <a class="contact" href="{{ url('/amp/contact-us') }}">Contact Us</a>
-          </li>
-          <li class="pt-4">
-            <a class="blog" href="{{ url('/blog') }}">Blog</a>
-          </li>
-          <li class="pt-4">
             <a class="lang" href="{{ url($langUrl) }}">Tiếng Việt</a>
           </li>
           <li class="pt-4">

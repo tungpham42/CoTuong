@@ -21,12 +21,6 @@
             <a class="about" href="{{ url('/about-us') }}">About Us</a>
           </li>
           <li>
-            <a class="contact" href="{{ url('/contact-us') }}">Contact Us</a>
-          </li>
-          <li>
-            <a class="blog" href="{{ url('/blog') }}">Blog</a>
-          </li>
-          <li>
             <a class="lang" href="{{ $langUrl }}">Tiếng Việt</a>
           </li>
           <li>
