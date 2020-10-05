@@ -6,8 +6,8 @@
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-danger btn-lg" href="/room/{{ $roomCode }}/red"><i class="fad fa-chess-clock-alt"></i> RED side</a>
-  <a class="w-25 btn btn-dark btn-lg" href="/room/{{ $roomCode }}/black"><i class="fad fa-chess-clock"></i> BLACK side</a>
+  <a class="w-25 btn btn-danger btn-lg" href="{{ url('/') }}/room/{{ $roomCode }}/red"><i class="fad fa-chess-clock-alt"></i> RED side</a>
+  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/') }}/room/{{ $roomCode }}/black"><i class="fad fa-chess-clock"></i> BLACK side</a>
 </p>
 <script>
 $(document).ready(function() {
@@ -24,7 +24,7 @@ $(document).ready(function() {
       if (password && password != "") {
         $.ajax({
           type: "GET",
-          url: '/getPass/' + '{{ $roomCode }}',
+          url: '{{ url('/') }}/getPass/' + '{{ $roomCode }}',
           dataType: 'text'
         }).done(function(data) {
           if (data != password) {
@@ -64,27 +64,30 @@ $(document).ready(function() {
 let board = null;
 let game = new Xiangqi();
 
-function writeTextFile(roomCode) {
+function updateFenCode(roomCode) {
   $.ajax({
     type: "POST",
-    url: '/updateFEN',
+    url: '{{ url('/') }}/updateFEN',
     data: {
       'ma-phong': roomCode,
       'FEN': game.fen()
     },
     dataType: 'text'
+  }).done(function(){
+    board.position(game.fen(), true);
+    game.load(game.fen());
+    $('#FEN').val(game.fen());
   });
-  $('#FEN').val(game.fen());
 }
 
 function manipulateRoom(roomCode) {
   $.ajax({
     type: "GET",
-    url: '/readFEN/' + roomCode,
+    url: '{{ url('/') }}/readFEN/' + roomCode,
     dataType: 'text'
   }).done(function(data) {
     if (data != game.fen()) {
-      board.position(data, false);
+      board.position(data, true);
       game.load(data);
       nuocCo.play();
       if (game.game_over()) {
@@ -158,10 +161,8 @@ function onMouseoutSquare (square, piece) {
 }
 
 function onSnapEnd () {
-  board.position(game.fen());
-  $('#FEN').val(game.fen());
   nuocCo.play();
-  writeTextFile('{{ $roomCode }}');
+  updateFenCode('{{ $roomCode }}');
   if (game.game_over()) {
     hetTran.play();
     $('#game-over').removeClass('d-none').addClass('d-inline-block');
@@ -222,6 +223,6 @@ updateStatus()
 function updateRoom() {
   manipulateRoom('{{ $roomCode }}');
 }
-setInterval(updateRoom, 1000);
+setInterval(updateRoom, 2500);
 </script>
 @endsection

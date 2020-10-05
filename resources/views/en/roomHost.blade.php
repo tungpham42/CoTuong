@@ -10,19 +10,19 @@
   <div id="status" class="w-100"></div>
 </div>
 <p class="w-100 text-center mt-2">
-  <a id="invite-friend" class="mx-auto btn btn-success py-2" target="_blank" href="/room/{{ $roomCode }}/invited"><i class="fad fa-external-link-alt"></i> Invite friend</a>
+  <i class="fad fa-external-link-alt"></i> Inviting friend to play by sending the link.
 </p>
-<div id="copy-url" class="input-group mb-2 w-50 mx-auto" data-toggle="tooltip" data-placement="bottom" data-original-title="Click to copy">
+<div id="copy-url-black" class="input-group mb-2 w-50 mx-auto" data-toggle="tooltip" data-placement="bottom" data-original-title="Click to copy">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="url-addon"><i class="fal fa-copy"></i></span>
+    <span class="input-group-text" id="url-addon-black"><i class="fal fa-copy"></i></span>
   </div>
-  <input type="text" class="form-control" id="url" aria-describedby="url-addon" value="{{ url('/') }}/room/{{ $roomCode }}/invited" />
+  <input type="text" class="form-control" id="url-black" value="{{ url('/') }}/room/{{ $roomCode }}/invited">
 </div>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-danger btn-lg" href="/room/{{ $roomCode }}/red"><i class="fad fa-chess-clock-alt"></i> RED side</a>
-  <a class="w-25 btn btn-dark btn-lg" href="/room/{{ $roomCode }}/black"><i class="fad fa-chess-clock"></i> BLACK side</a>
+  <a class="w-25 btn btn-danger btn-lg" href="{{ url('/') }}/room/{{ $roomCode }}/red"><i class="fad fa-chess-clock-alt"></i> RED side</a>
+  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/') }}/room/{{ $roomCode }}/black"><i class="fad fa-chess-clock"></i> BLACK side</a>
 </p>
 <script>
 function validateForm() {
@@ -32,7 +32,7 @@ function validateForm() {
     'pass': $('#inputPassword').val()
   };
   $.ajax({
-    url : "/changePass",
+    url: "{{ url('/') }}/changePass",
     type: "POST",
     data : formData,
     dataType: 'json',
@@ -63,7 +63,7 @@ $(document).ready(function() {
       if (password && password != "") {
         $.ajax({
           type: "GET",
-          url: '/getPass/' + '{{ $roomCode }}',
+          url: '{{ url('/') }}/getPass/' + '{{ $roomCode }}',
           dataType: 'text'
         }).done(function(data) {
           if (data != password) {
@@ -103,27 +103,30 @@ $(document).ready(function() {
 let board = null;
 let game = new Xiangqi();
 
-function writeTextFile(roomCode) {
+function updateFenCode(roomCode) {
   $.ajax({
     type: "POST",
-    url: '/updateFEN',
+    url: '{{ url('/') }}/updateFEN',
     data: {
       'ma-phong': roomCode,
       'FEN': game.fen()
     },
     dataType: 'text'
+  }).done(function(){
+    board.position(game.fen(), true);
+    game.load(game.fen());
+    $('#FEN').val(game.fen());
   });
-  $('#FEN').val(game.fen());
 }
 
 function manipulateRoom(roomCode) {
   $.ajax({
     type: "GET",
-    url: '/readFEN/' + roomCode,
+    url: '{{ url('/') }}/readFEN/' + roomCode,
     dataType: 'text'
   }).done(function(data) {
     if (data != game.fen()) {
-      board.position(data, false);
+      board.position(data, true);
       game.load(data);
       nuocCo.play();
       if (game.game_over()) {
@@ -197,10 +200,8 @@ function onMouseoutSquare (square, piece) {
 }
 
 function onSnapEnd () {
-  board.position(game.fen());
-  $('#FEN').val(game.fen());
   nuocCo.play();
-  writeTextFile('{{ $roomCode }}');
+  updateFenCode('{{ $roomCode }}');
   if (game.game_over()) {
     hetTran.play();
     $('#game-over').removeClass('d-none').addClass('d-inline-block');
@@ -261,6 +262,6 @@ updateStatus()
 function updateRoom() {
   manipulateRoom('{{ $roomCode }}');
 }
-setInterval(updateRoom, 1000);
+setInterval(updateRoom, 2500);
 </script>
 @endsection

@@ -9,34 +9,16 @@
 </p>
 <script>
 let board = null;
+let $board = $('#ban-co');
 let game = new Xiangqi();
+let squareToHighlight = null;
+let colorToHighlight = null;
+let squareClass = 'square-2b8ce';
 
-function writeTextFile(file) {
-  $.ajax({
-    type: "POST",
-    url: '/triggers/update_FEN.php',
-    data: {
-      FEN_file: file,
-      FEN_txt: game.fen()
-    },
-    dataType: 'text'
-  });
+function removeHighlights (color) {
+  $board.find('.' + squareClass).removeClass('highlight-' + color);
 }
 
-function readTextFile(file) {
-  var rawFile = new XMLHttpRequest();
-  rawFile.open('GET', file, false);
-  rawFile.onreadystatechange = function ()
-  {
-    if(rawFile.readyState === 4) {
-      if(rawFile.status === 200 || rawFile.status == 0) {
-        var allText = rawFile.responseText;
-        board.position(allText, false);
-      }
-    }
-  }
-  rawFile.send(null);
-}
 function removeGreySquares () {
   $('#ban-co .square-2b8ce').removeClass('highlight');
 }
@@ -68,6 +50,20 @@ function onDrop (source, target) {
   });
   // illegal move
   if (move === null) return 'snapback';
+
+  if (move.color === 'r') {
+    removeHighlights('red');
+    $board.find('.square-' + source).addClass('highlight-red');
+    $board.find('.square-' + target).addClass('highlight-red');
+    squareToHighlight = target;
+    colorToHighlight = 'red';
+  } else {
+    removeHighlights('black');
+    $board.find('.square-' + source).addClass('highlight-black');
+    $board.find('.square-' + target).addClass('highlight-black');
+    squareToHighlight = target;
+    colorToHighlight = 'black';
+  }
   updateStatus();
 }
 
@@ -97,7 +93,6 @@ function onMouseoutSquare (square, piece) {
 function onSnapEnd () {
   board.position(game.fen());
   $('#FEN').val(game.fen());
-  writeTextFile('/FEN/sample.txt');
   nuocCo.play();
   updateStatus();
   if (game.game_over()) {
@@ -105,6 +100,11 @@ function onSnapEnd () {
     $('#game-over').removeClass('d-none').addClass('d-inline-block');
   }
 }
+
+function onMoveEnd () {
+  $board.find('.square-' + squareToHighlight).addClass('highlight-' + colorToHighlight);
+}
+
 function updateStatus () {
   var status = ''
 
@@ -151,13 +151,11 @@ let config = {
   onMouseoutSquare: onMouseoutSquare,
   onMouseoverSquare: onMouseoverSquare,
   onSnapEnd: onSnapEnd,
+  onMoveEnd: onMoveEnd
   //pieceTheme: '/static/img/xiangqipieces/traditional/{piece}.svg'
 };
 board = Xiangqiboard('ban-co', config);
 updateStatus();
-function updateBoard() {
-  readTextFile('/FEN/sample.txt');
-}
 $('#reset').on('click', function() {
   board.position('rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR');
   game.load('rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1');
@@ -165,6 +163,5 @@ $('#reset').on('click', function() {
   updateStatus();
   $('#game-over').removeClass('d-inline-block').addClass('d-none');
 });
-//        setInterval(updateBoard, 240);
 </script>
 @endsection

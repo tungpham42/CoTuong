@@ -1,4 +1,4 @@
-body.home header.site-header a.home, body.about header.site-header a.about, body.bmi header.site-header a.bmi, body.game header.site-header a.game, body.room header.site-header a.room, body.news header.site-header a.news, body.contact header.site-header a.contact {
+body.home header.site-header a.home, body.setup header.site-header a.setup, body.about header.site-header a.about, body.bmi header.site-header a.bmi, body.game header.site-header a.game, body.room header.site-header a.room, body.news header.site-header a.news, body.contact header.site-header a.contact {
   &:before, &::before {
     -webkit-transform: translateY(18px);
     transform: translateY(18px);
@@ -138,8 +138,8 @@ header.site-header {
   header.site-header {
     .navbar-brand {
       margin-left: auto;
-      span {
-        display: none;
+      h1, span {
+        display: none !important;
       }
       img {
         margin-right: 0;

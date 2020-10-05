@@ -19,9 +19,9 @@
     pointer-events: none !important;
 }
 
-.xiangqiboard-8ddcb {
-    pointer-events: none !important;
-}
+// .xiangqiboard-8ddcb {
+//     pointer-events: none !important;
+// }
 
 .square-2b8ce {
     float: left;
@@ -86,4 +86,8 @@
 .numeric-fe76e {
     top: 40%;
     left: 1px;
+}
+
+.piece-1e8b9 {
+    cursor: pointer;
 }

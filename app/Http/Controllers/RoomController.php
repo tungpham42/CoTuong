@@ -18,12 +18,12 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = DB::table('rooms')->get();
-        return view('roomList', ['headTitle' => 'Danh sách phòng', 'bodyClass' => 'room', 'rooms' => Room::all(), 'newBadge' => '&nbsp;<span class="badge badge-danger">MỚI</span>', 'roomCode' => '', 'langUrl' => '/rooms']);
+        return view($this->getView('roomList'), ['headTitle' => 'Danh sách phòng', 'bodyClass' => 'room', 'rooms' => Room::all(), 'newBadge' => '&nbsp;<span class="badge badge-danger">MỚI</span>', 'roomCode' => '', 'langUrl' => $this->getUrl('/rooms'), 'canonicalUrl' => '/danh-sach-phong']);
     }
     public function index_en()
     {
         $rooms = DB::table('rooms')->get();
-        return view('en/roomList', ['headTitle' => 'Rooms', 'bodyClass' => 'room', 'rooms' => Room::all(), 'roomCode' => '', 'langUrl' => '/danh-sach-phong']);
+        return view($this->getView('en/roomList'), ['headTitle' => 'Rooms', 'bodyClass' => 'room', 'rooms' => Room::all(), 'roomCode' => '', 'langUrl' => $this->getUrl('/danh-sach-phong'), 'canonicalUrl' => '/rooms']);
     }
 
 

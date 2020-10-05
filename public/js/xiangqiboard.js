@@ -22,6 +22,8 @@ const ROW_TOP = 9
 const ROW_LOW = 0
 const ROW_LENGTH = ROW_TOP - ROW_LOW + 1
 const COLUMNS = Object.freeze('abcdefghi'.split(''))
+const COLS_TOP = Object.freeze('123456789'.split(''))
+const COLS_LOW = Object.freeze('987654321'.split(''))
 const DEFAULT_DRAG_THROTTLE_RATE = 20
 const ELLIPSIS = '...'
 const MINIMUM_JQUERY_VERSION = '1.8.3'
@@ -587,13 +589,13 @@ function expandConfig (config) {
     // default piece theme is wikimedia
     if (!config.hasOwnProperty('pieceTheme') ||
         (!isString(config.pieceTheme) && !isFunction(config.pieceTheme))) {
-    config.pieceTheme = '/img/xiangqipieces/quan/{piece}.svg'
+    config.pieceTheme = $('#piecesUrl').val() + '/img/xiangqipieces/quan/{piece}.svg'
     }
 
     // default board theme is wikimedia
     if (!config.hasOwnProperty('boardTheme') || !isString(config.boardTheme)) {
     //config.boardTheme = '/img/xiangqiboards/wikimedia/xiangqiboard.svg'
-    config.boardTheme = '/img/xiangqiboards/banco.svg'
+    config.boardTheme = $('#piecesUrl').val() + '/img/xiangqiboards/ban-co.svg'
     }
 
     // animation speeds
@@ -829,6 +831,8 @@ function constructor (containerElOrString, config) {
 
     // algebraic notation / orientation
     const alpha = deepCopy(COLUMNS)
+    const col_top = deepCopy(COLS_TOP)
+    const col_low = deepCopy(COLS_LOW)
     let row = ROW_TOP
     if (orientation === 'black') {
         alpha.reverse()
@@ -847,14 +851,11 @@ function constructor (containerElOrString, config) {
 
         if (config.showNotation) {
             // alpha notation
-            if ((orientation === 'red' && row === ROW_LOW) ||
-                (orientation === 'black' && row === ROW_TOP)) {
-            html += '<div class="{notation} {alpha}">' + alpha[j] + '</div>'
+            if (row === ROW_TOP) {
+                html += '<div class="{notation} {alpha}" style="top: 1px; bottom: auto; font-weight: bold;">' + col_top[j] + '</div>'
             }
-
-            // numeric notation
-            if (j === 0) {
-            html += '<div class="{notation} {numeric}">' + row + '</div>'
+            if (row === ROW_LOW) {
+                html += '<div class="{notation} {alpha}" style="top: auto; bottom: 1px; font-weight: bold;">' + col_low[j] + '</div>'
             }
         }
 
@@ -901,7 +902,7 @@ function constructor (containerElOrString, config) {
     if (isString(id) && id !== '') {
         html += 'id="' + id + '" '
     }
-    html += 'alt="" ' +
+    html += 'alt="' + piece + '" ' +
         'class="{piece}" ' +
         'data-piece="' + piece + '" ' +
         'style="width:' + squareSize + 'px;' + 'height:' + squareSize + 'px;'

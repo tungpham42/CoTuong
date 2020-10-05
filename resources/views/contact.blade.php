@@ -1,7 +1,7 @@
 @extends('layout.mainlayout')
 @section('aboveContent')
 <div class="container-fluid contact px-0">
-  <div class="container p-5">
+  <div class="container p-3">
     <h2 class="h1-responsivefooter text-center my-4">Liên hệ</h2>
     <div class="row">
       <!--Grid column-->
@@ -99,7 +99,7 @@ function validateForm() {
     'message'  : $('textarea[name=message]').val()
   };
   $.ajax({
-    url : "/xulyMail",
+    url : "{{ URL::to('/') }}/xulyMail",
     type: "POST",
     data : formData,
     dataType: 'json',

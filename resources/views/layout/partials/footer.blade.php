@@ -1,10 +1,10 @@
 <footer>
   <div class="container">
     <div class="row p-5">
-      <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3">
+      <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 vcard">
         <p>Email liên hệ</p>
-        <a class="w-100" href="mailto:tung.42@gmail.com">tung.42@gmail.com</a>
-        <p class="mt-3"><i class="fal fa-copyright"></i> Bản quyền <a target="_blank" href="https://tungpham42.info/">Phạm Tùng</a></p>
+        <a class="w-100 email" href="mailto:tung.42@gmail.com">tung.42@gmail.com</a>
+        <p class="mt-3"><i class="fal fa-copyright"></i> Bản quyền <a class="url fn h-card" target="_blank" href="https://tungpham42.info/">Phạm Tùng</a></p>
       </div>
       <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3">
         <ul class="list-unstyled">
@@ -15,13 +15,22 @@
             <a class="room" href="{{ url('/danh-sach-phong') }}">Danh sách phòng</a>
           </li>
           <li>
+            <a class="setup" href="{{ url('/co-the') }}">Cờ thế</a>
+          </li>
+          <li>
             <a class="about" href="{{ url('/gioi-thieu') }}">Giới thiệu</a>
+          </li>
+          <li>
+            <a class="contact" href="{{ url('/lien-he') }}">Liên hệ</a>
+          </li>
+          <li>
+            <a class="blog" href="{{ url('/blog') }}">Blog</a>
           </li>
           <li>
             <a class="lang" href="{{ url($langUrl) }}">English</a>
           </li>
           <li>
-            <a target="_blank" class="buy" href="https://www.codester.com/items/24223/xiangqi-game-with-ai-and-room-hosting?ref=tungpham"><i class="fal fa-usd-circle"></i> MUA</a>
+            <a target="_blank" class="buy" href="https://www.codester.com/items/24523/dual-languages-xiangqi-game-with-ai-and-room-host?ref=tungpham"><i class="far fa-shopping-cart"></i> MUA</a>
           </li>
         </ul>
       </div>
@@ -67,7 +76,14 @@
         </button>
       </div>
       <div class="modal-body text-center">
-        <a target="_blank" href="https://nhanhoa.com/may-chu/may-chu-ao-vps.html?aff=5305"><img src="https://nhanhoa.com/uploads/aff/vps/300x250.png" title="Đăng ký Cloud VPS"></a>
+        <!-- CO_300x300 -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:300px;height:300px"
+            data-ad-client="ca-pub-3585118770961536"
+            data-ad-slot="7625346255"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
@@ -118,5 +134,5 @@ if(typeof blockAdBlock === 'undefined') {
 //	resetOnEnd: false
 //});
 </script>
-<a href="#0" class="cd-top js-cd-top rounded">Top</a>
+<a href="#0" class="cd-top js-cd-top rounded" style="background-image: url({{ URL::to('/') }}/img/cd-top-arrow.svg);">Top</a>
 <script src="{{ URL::to('/') }}/js/to-top.js"></script>

@@ -1,7 +1,7 @@
 @extends('en.layout.mainlayout')
 @section('aboveContent')
 <div class="container-fluid about px-0">
-  <div class="container p-5">
+  <div class="container p-3">
     <h2 class="h1-responsivefooter text-center my-4">About us</h2>
     <div class="row">
       <p>Xiangqi (Chinese: 象棋; pinyin: xiàngqí; English: /ˈʃɑːŋtʃi/), also called Chinese chess, is a strategy board game for two players. It is one of the most popular board games in China, and is in the same family as Western (or international) chess, chaturanga, shogi, Indian chess and janggi. Besides China and areas with significant ethnic Chinese communities, xiangqi is also a popular pastime in Vietnam, where it is known as cờ tướng.</p>

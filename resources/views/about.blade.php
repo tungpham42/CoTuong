@@ -1,7 +1,7 @@
 @extends('layout.mainlayout')
 @section('aboveContent')
 <div class="container-fluid about px-0">
-  <div class="container p-5">
+  <div class="container p-3">
     <h2 class="h1-responsivefooter text-center my-4">Giới thiệu</h2>
     <div class="row">
       <p>Cờ tướng (Tiếng Trung: 象棋), hay còn gọi là cờ Trung Hoa (Tiếng Trung: 中國象棋), là một trò chơi trí tuệ dành cho hai người. Đây là loại cờ phổ biến nhất tại các nước như Trung Hoa, Việt Nam, Đài Loan và Singapore và nằm trong cùng một thể loại cờ với cờ vua, shogi, janggi.</p>

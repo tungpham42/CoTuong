@@ -1,11 +1,17 @@
 .highlight {
   box-shadow: inset 0 0 3px 3px #6d5330;
 }
+.highlight-red {
+  box-shadow: inset 0 0 3px 3px red;
+}
+.highlight-black {
+  box-shadow: inset 0 0 3px 3px black;
+}
 #ban-co {
   touch-action: none !important;
   pointer-events: all;
 }
-#copy-url, #url {
+#copy-url-red, #url-red, #copy-url-black, #url-black {
   cursor: pointer;
 }
 .side-color {
@@ -22,8 +28,11 @@
     color: black;
   }
 }
+body.setup #game-status {
+  display: none !important;
+}
 #game-status {
-  background-color: antiquewhite !important;
+  background-color: transparent !important;
   padding: 12px 24px;
   font-weight: bolder;
   border-width: 2px;
@@ -94,8 +103,18 @@ ul#credit {
     }
   }
 }
-@media (max-width: 991px) {
-  #ban-co, #copy-url, #change-pass {
+@media screen and (max-width: 767px) {
+  #ban-co {
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #ban-co {
+    width: 75% !important;
+  }
+}
+@media screen and (max-width: 991px) {
+  #copy-url-red, #copy-url-black, #change-pass {
     width: 100% !important;
   }
   .btn.w-25 {
@@ -131,3 +150,8 @@ ul#credit {
 @-ms-keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
 @keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
 //end
+.dropdown-item {
+  &.active, &:active {
+    background-color: $c-base !important;
+  }
+}
