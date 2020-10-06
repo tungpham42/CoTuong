@@ -99,7 +99,7 @@ function validateForm() {
     'message'  : $('textarea[name=message]').val()
   };
   $.ajax({
-    url : "{{ URL::to('/') }}/processMail",
+    url : "{{ url('/api') }}/processMail",
     type: "POST",
     data : formData,
     dataType: 'json',

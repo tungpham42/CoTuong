@@ -14,6 +14,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::post('/createRoom', [
+    "uses" => 'RoomController@create',
+    "as" => 'create'
+]);
+Route::get('/getPass/{code}', [
+    "uses" => 'RoomController@getPass',
+    "as" => 'getPass'
+]);
+Route::post('/changePass', [
+    "uses" => 'RoomController@changePass',
+    "as" => 'changePass'
+]);
+Route::post('/doiPass', [
+    "uses" => 'RoomController@doiPass',
+    "as" => 'doiPass'
+]);
+Route::post('/updateFEN', [
+    "uses" => 'RoomController@store',
+    "as" => 'store'
+]);
+Route::get('/readFEN/{code}', [
+    "uses" => 'RoomController@show',
+    "as" => 'show'
+]);
+Route::post('/processMail', [
+    "uses" => 'MailController@send',
+    "as" => 'send'
+]);
+Route::post('/xulyMail', [
+    "uses" => 'MailController@gui',
+    "as" => 'gui'
+]);

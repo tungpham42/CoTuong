@@ -25,7 +25,7 @@ $(document).ready(function() {
       if (password && password != "") {
         $.ajax({
           type: "GET",
-          url: '{{ url('/') }}/getPass/' + '{{ $roomCode }}',
+          url: '{{ url('/api') }}/getPass/' + '{{ $roomCode }}',
           dataType: 'text'
         }).done(function(data) {
           if (data != password) {
@@ -70,7 +70,7 @@ let game = new Xiangqi();
 function updateFenCode(roomCode) {
   $.ajax({
     type: "POST",
-    url: '{{ url('/') }}/updateFEN',
+    url: '{{ url('/api') }}/updateFEN',
     data: {
       'ma-phong': roomCode,
       'FEN': game.fen()
@@ -86,7 +86,7 @@ function updateFenCode(roomCode) {
 function manipulateRoom(roomCode) {
   $.ajax({
     type: "GET",
-    url: '{{ url('/') }}/readFEN/' + roomCode,
+    url: '{{ url('/api') }}/readFEN/' + roomCode,
     dataType: 'text'
   }).done(function(data) {
     if (data != game.fen()) {
