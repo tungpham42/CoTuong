@@ -102,6 +102,7 @@ $(document).ready(function() {
 });
 let board = null;
 let game = new Xiangqi();
+let currentFEN = game.fen();
 
 function updateFenCode(roomCode) {
   $.ajax({
@@ -115,7 +116,6 @@ function updateFenCode(roomCode) {
   }).done(function(){
     board.position(game.fen(), true);
     game.load(game.fen());
-    $('#FEN').val(game.fen());
   });
 }
 
@@ -124,14 +124,22 @@ function manipulateRoom(roomCode) {
     type: "GET",
     url: '{{ url('/api') }}/readFEN/' + roomCode,
     dataType: 'text'
-  }).done(function(data) {
-    if (data != game.fen()) {
-      board.position(data, true);
-      game.load(data);
-      nuocCo.play();
-      if (game.game_over()) {
-        hetTran.play();
-        $('#game-over').removeClass('d-none').addClass('d-inline-block');
+  }).done(function(newFEN) {
+    if (newFEN != currentFEN) {
+      currentFEN = game.fen();
+      if (newFEN == game.fen()) {
+        // my move
+        board.position(newFEN, true);
+        game.load(newFEN);
+      } else {
+        // opponent's move
+        board.position(newFEN, true);
+        game.load(newFEN);
+        nuocCo.play();
+        if (game.game_over()) {
+          hetTran.play();
+          $('#game-over').removeClass('d-none').addClass('d-inline-block');
+        }
       }
     }
     updateStatus()
@@ -259,9 +267,29 @@ let config = {
 };
 board = Xiangqiboard('ban-co', config);
 updateStatus()
-function updateRoom() {
-  manipulateRoom('{{ $roomCode }}');
-}
-setInterval(updateRoom, 2500);
+let evtSource = new EventSource("{{ url('/api') }}/getFEN/{{ $roomCode }}");
+
+evtSource.onmessage = function (e) {
+  let newFEN = e.data;
+  console.log(newFEN);
+  if (newFEN != currentFEN) {
+    currentFEN = game.fen();
+    if (newFEN == game.fen()) {
+      // my move
+      board.position(newFEN, true);
+      game.load(newFEN);
+    } else {
+      // opponent's move
+      board.position(newFEN, true);
+      game.load(newFEN);
+      nuocCo.play();
+      if (game.game_over()) {
+        hetTran.play();
+        $('#game-over').removeClass('d-none').addClass('d-inline-block');
+      }
+    }
+  }
+  updateStatus();
+};
 </script>
 @endsection

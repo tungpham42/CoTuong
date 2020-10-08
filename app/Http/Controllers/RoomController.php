@@ -7,6 +7,7 @@ use App\Room;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class RoomController extends Controller
 {
@@ -135,7 +136,30 @@ class RoomController extends Controller
         }
     }
 
-    
+    public function getEventStream(Room $room, $code) {
+        $fenJson = DB::table('rooms')
+                    ->select('fen')
+                    ->where('code', '=', $code)
+                    ->get();
+        $fen = json_decode($fenJson, true)[0]['fen'];
+
+        $response = new StreamedResponse();
+        $response->setCallback(function () use ($fen){
+
+            echo 'data: ' . $fen . "\n\n";
+            //echo "retry: 100\n\n"; // no retry would default to 3 seconds.
+            //echo "data: Hello There\n\n";
+            ob_flush();
+            flush();
+            //sleep(1);
+            usleep(200000);
+        });
+
+        $response->headers->set('Content-Type', 'text/event-stream');
+        $response->headers->set('X-Accel-Buffering', 'no');
+        $response->headers->set('Cach-Control', 'no-cache');
+        $response->send();
+    }
     /**
      * Show the form for editing the specified resource.
      *

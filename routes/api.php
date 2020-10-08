@@ -41,6 +41,10 @@ Route::get('/readFEN/{code}', [
     "uses" => 'RoomController@show',
     "as" => 'show'
 ]);
+Route::get('/getFEN/{code}', [
+    "uses" => 'RoomController@getEventStream',
+    "as" => 'getEventStream'
+]);
 Route::post('/processMail', [
     "uses" => 'MailController@send',
     "as" => 'send'
