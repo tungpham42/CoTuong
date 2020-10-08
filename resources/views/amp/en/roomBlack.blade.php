@@ -66,6 +66,8 @@ let game = new Xiangqi();
 let currentFEN = game.fen();
 
 function updateFenCode(roomCode) {
+  board.position(game.fen(), true);
+  game.load(game.fen());
   $.ajax({
     type: "POST",
     url: '{{ url('/api') }}/updateFEN',
@@ -74,9 +76,6 @@ function updateFenCode(roomCode) {
       'FEN': game.fen()
     },
     dataType: 'text'
-  }).done(function(){
-    board.position(game.fen(), true);
-    game.load(game.fen());
   });
 }
 
