@@ -142,7 +142,7 @@ function onDrop (source, target) {
   });
 
   // illegal move
-  if (move === null) return 'snapback';
+  //if (move === null) return 'snapback';
   updateStatus()
 }
 
@@ -177,6 +177,7 @@ function onSnapEnd () {
     $('#game-over').removeClass('d-none').addClass('d-inline-block');
   }
 }
+
 function updateStatus () {
   var status = ''
 
@@ -231,7 +232,6 @@ let config = {
 board = Xiangqiboard('ban-co', config);
 
 updateStatus()
-
 let evtSource = new EventSource("{{ url('/api') }}/getFEN/{{ $roomCode }}");
 
 evtSource.onmessage = function (e) {
@@ -239,6 +239,15 @@ evtSource.onmessage = function (e) {
   console.log(newFEN);
   if (newFEN != currentFEN) {
     currentFEN = game.fen();
+    $.ajax({
+      type: "POST",
+      url: '{{ url('/api') }}/updateFEN',
+      data: {
+        'ma-phong': '{{ $roomCode }}',
+        'FEN': newFEN
+      },
+      dataType: 'text'
+    });
     if (newFEN == game.fen()) {
       // my move
       board.position(newFEN, true);

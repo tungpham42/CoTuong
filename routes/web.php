@@ -23,11 +23,18 @@ Route::get('/play-with-friend', function () {
 });
 
 Route::get('/co-the', function () {
-  return view(Controller::getView('setup'), ['headTitle' => 'Xếp bàn cờ thế', 'bodyClass' => 'setup', 'roomCode' => '', 'langUrl' => Controller::getUrl('/set-up'), 'canonicalUrl' => '/co-the']);
+  return view(Controller::getView('setup'), ['headTitle' => 'Xếp bàn cờ thế', 'bodyClass' => 'setup', 'board' => '', 'roomCode' => '', 'langUrl' => Controller::getUrl('/set-up'), 'canonicalUrl' => '/co-the']);
 });
 Route::get('/set-up', function () {
-  return view(Controller::getView('en/setup'), ['headTitle' => 'Set up the board', 'bodyClass' => 'setup', 'roomCode' => '', 'langUrl' => Controller::getUrl('/co-the'), 'canonicalUrl' => '/set-up']);
+  return view(Controller::getView('en/setup'), ['headTitle' => 'Set up the board', 'bodyClass' => 'setup', 'board' => '', 'roomCode' => '', 'langUrl' => Controller::getUrl('/co-the'), 'canonicalUrl' => '/set-up']);
 });
+
+Route::get('/co-the/{board}', function ($board) {
+  return view(Controller::getView('setup'), ['headTitle' => 'Xếp bàn cờ thế', 'bodyClass' => 'setup', 'board' => $board, 'roomCode' => '', 'langUrl' => Controller::getUrl('/set-up/'.$board), 'canonicalUrl' => '/co-the/'.$board]);
+})->where(['board' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);;
+Route::get('/set-up/{board}', function ($board) {
+  return view(Controller::getView('en/setup'), ['headTitle' => 'Set up the board', 'bodyClass' => 'setup', 'board' => $board, 'roomCode' => '', 'langUrl' => Controller::getUrl('/co-the/'.$board), 'canonicalUrl' => '/set-up/'.$board]);
+})->where(['board' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);;
 
 Route::get('/chia-se/{fen}', function ($fen) {
   return view(Controller::getView('share'), ['headTitle' => 'Chia sẻ bàn cờ', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'langUrl' => Controller::getUrl('/share/'.$fen), 'canonicalUrl' => '/chia-se/'.$fen]);

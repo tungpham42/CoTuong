@@ -4,7 +4,7 @@
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-dark btn-lg" href="{{ url('/') }}"><i class="fad fa-desktop"></i> Chơi với máy</a>
+  <a id="new-board" class="w-25 btn btn-dark btn-lg"><i class="fad fa-plus-circle"></i> Bàn mới</a>
   <a id="clear" class="w-25 btn btn-danger btn-lg"><i class="fad fa-redo-alt"></i> Xếp lại</a>
 </p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha512-OqcrADJLG261FZjar4Z6c4CfLqd861A3yPNMb+vRQ2JwzFT49WT4lozrh3bcKxHxtDTgNiqgYbEUStzvZQRfgQ==" crossorigin="anonymous"></script>
@@ -15,7 +15,17 @@ const board = Xiangqiboard('ban-co', {
   draggable: true,
   dropOffBoard: 'trash',
   sparePieces: true,
+  @php
+  if ($board != '') {
+    echo 'position: "'.$board.'",';
+  } else {
+    echo '';
+  }
+  @endphp
   showNotation: true
+});
+$('#new-board').on('click', function(){
+  window.location.href = "{{ URL::to('/co-the/') }}/" + board.fen();
 });
 $('#clear').on('click', board.clear);
 $("#capture").on('click', function() {
