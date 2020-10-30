@@ -4,7 +4,7 @@
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
-  <a id="new-board" class="w-25 btn btn-dark btn-lg"><i class="fad fa-plus-circle"></i> Bàn mới</a>
+  <a id="new-board" class="w-25 btn btn-warning btn-lg"><i class="fad fa-plus-circle"></i> Bàn mới</a>
   <a id="clear" class="w-25 btn btn-danger btn-lg"><i class="fad fa-redo-alt"></i> Xếp lại</a>
 </p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha512-OqcrADJLG261FZjar4Z6c4CfLqd861A3yPNMb+vRQ2JwzFT49WT4lozrh3bcKxHxtDTgNiqgYbEUStzvZQRfgQ==" crossorigin="anonymous"></script>

@@ -15,6 +15,9 @@
             <a class="setup" href="{{ url('/set-up') }}">Set Up</a>
           </li>
           <li class="pt-4">
+            <a class="about" href="{{ url('/about-us') }}">About Us</a>
+          </li>
+          <li class="pt-4">
             <a class="lang" href="{{ url($langUrl) }}">Tiếng Việt</a>
           </li>
           <li class="pt-4">

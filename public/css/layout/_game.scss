@@ -140,15 +140,30 @@ ul#credit {
 	-moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 	-ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 	animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  &-gold {
+    position: relative;
+    box-shadow: 0 0 0 0 rgba(255, 133, 27, 0.84);
+    cursor: pointer;
+    -webkit-animation: pulse-gold 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse-gold 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulse-gold 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse-gold 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  }
 }
-.pulse:hover {
-	-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+.pulse, .pulse-gold {
+  &:hover {
+  	-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+  }
 }
-
 @-webkit-keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
 @-moz-keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
 @-ms-keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
 @keyframes pulse {to {box-shadow: 0 0 0 24px rgba(33, 136, 56, 0);}}
+
+@-webkit-keyframes pulse-gold {to {box-shadow: 0 0 0 24px rgba(255, 133, 27, 0);}}
+@-moz-keyframes pulse-gold {to {box-shadow: 0 0 0 24px rgba(255, 133, 27, 0);}}
+@-ms-keyframes pulse-gold {to {box-shadow: 0 0 0 24px rgba(255, 133, 27, 0);}}
+@keyframes pulse-gold {to {box-shadow: 0 0 0 24px rgba(255, 133, 27, 0);}}
 //end
 .dropdown-item {
   &.active, &:active {

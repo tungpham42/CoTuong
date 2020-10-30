@@ -31,16 +31,55 @@ Route::get('/set-up', function () {
 
 Route::get('/co-the/{board}', function ($board) {
   return view(Controller::getView('setup'), ['headTitle' => 'Xếp bàn cờ thế', 'bodyClass' => 'setup', 'board' => $board, 'roomCode' => '', 'langUrl' => Controller::getUrl('/set-up/'.$board), 'canonicalUrl' => '/co-the/'.$board]);
-})->where(['board' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);;
+})->where(['board' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
 Route::get('/set-up/{board}', function ($board) {
   return view(Controller::getView('en/setup'), ['headTitle' => 'Set up the board', 'bodyClass' => 'setup', 'board' => $board, 'roomCode' => '', 'langUrl' => Controller::getUrl('/co-the/'.$board), 'canonicalUrl' => '/set-up/'.$board]);
-})->where(['board' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);;
+})->where(['board' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
 
 Route::get('/chia-se/{fen}', function ($fen) {
   return view(Controller::getView('share'), ['headTitle' => 'Chia sẻ bàn cờ', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'langUrl' => Controller::getUrl('/share/'.$fen), 'canonicalUrl' => '/chia-se/'.$fen]);
 })->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+
+Route::get('/chia-se-de-nhat/{fen}', function ($fen) {
+  return view(Controller::getView('shareAi'), ['headTitle' => 'Bàn cờ dễ nhất', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '1', 'levelTxt' => 'Dễ nhất', 'langUrl' => Controller::getUrl('/share-easiest/'.$fen), 'canonicalUrl' => '/chia-se-de-nhat/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/chia-se-moi-choi/{fen}', function ($fen) {
+  return view(Controller::getView('shareAi'), ['headTitle' => 'Bàn cờ mới chơi', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '1', 'levelTxt' => 'Mới chơi', 'langUrl' => Controller::getUrl('/share-newbie/'.$fen), 'canonicalUrl' => '/chia-se-moi-choi/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/chia-se-de/{fen}', function ($fen) {
+  return view(Controller::getView('shareAi'), ['headTitle' => 'Bàn cờ dễ', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '2', 'levelTxt' => 'Dễ', 'langUrl' => Controller::getUrl('/share-easy/'.$fen), 'canonicalUrl' => '/chia-se-de/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/chia-se-binh-thuong/{fen}', function ($fen) {
+  return view(Controller::getView('shareAi'), ['headTitle' => 'Bàn cờ bình thường', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '3', 'levelTxt' => 'Bình thường', 'langUrl' => Controller::getUrl('/share-normal/'.$fen), 'canonicalUrl' => '/chia-se-binh-thuong/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/chia-se-kho/{fen}', function ($fen) {
+  return view(Controller::getView('shareAi'), ['headTitle' => 'Bàn cờ khó', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '4', 'levelTxt' => 'Khó', 'langUrl' => Controller::getUrl('/share-hard/'.$fen), 'canonicalUrl' => '/chia-se-kho/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/chia-se-kho-nhat/{fen}', function ($fen) {
+  return view(Controller::getView('shareAi'), ['headTitle' => 'Bàn cờ khó nhất', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '5', 'levelTxt' => 'Khó nhất', 'langUrl' => Controller::getUrl('/share-hardest/'.$fen), 'canonicalUrl' => '/chia-se-kho-nhat/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+
 Route::get('/share/{fen}', function ($fen) {
     return view(Controller::getView('en/share'), ['headTitle' => 'Share board', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'langUrl' => Controller::getUrl('/chia-se/'.$fen), 'canonicalUrl' => '/share/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+
+Route::get('/share-easiest/{fen}', function ($fen) {
+    return view(Controller::getView('en/shareAi'), ['headTitle' => 'Easiest board', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '1', 'levelTxt' => 'Easiest', 'langUrl' => Controller::getUrl('/chia-se-de-nhat/'.$fen), 'canonicalUrl' => '/share-easiest/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/share-newbie/{fen}', function ($fen) {
+    return view(Controller::getView('en/shareAi'), ['headTitle' => 'Newbie board', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '1', 'levelTxt' => 'Newbie', 'langUrl' => Controller::getUrl('/chia-se-de-nhat/'.$fen), 'canonicalUrl' => '/share-newbie/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/share-easy/{fen}', function ($fen) {
+    return view(Controller::getView('en/shareAi'), ['headTitle' => 'Easy board', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '2', 'levelTxt' => 'Easy', 'langUrl' => Controller::getUrl('/chia-se-de/'.$fen), 'canonicalUrl' => '/share-easy/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/share-normal/{fen}', function ($fen) {
+    return view(Controller::getView('en/shareAi'), ['headTitle' => 'Normal board', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '3', 'levelTxt' => 'Normal', 'langUrl' => Controller::getUrl('/chia-se-binh-thuong/'.$fen), 'canonicalUrl' => '/share-normal/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/share-hard/{fen}', function ($fen) {
+    return view(Controller::getView('en/shareAi'), ['headTitle' => 'Hard board', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '4', 'levelTxt' => 'Hard', 'langUrl' => Controller::getUrl('/chia-se-kho/'.$fen), 'canonicalUrl' => '/share-hard/'.$fen]);
+})->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
+Route::get('/share-hardest/{fen}', function ($fen) {
+    return view(Controller::getView('en/shareAi'), ['headTitle' => 'Hardest board', 'bodyClass' => 'home', 'fen' => $fen, 'roomCode' => '', 'level' => '5', 'levelTxt' => 'Hardest', 'langUrl' => Controller::getUrl('/chia-se-kho-nhat/'.$fen), 'canonicalUrl' => '/share-hardest/'.$fen]);
 })->where(['fen' => "[a-zA-Z0-9\-\/\s|&nbsp;]+"]);
 
 Route::get('/', function () {

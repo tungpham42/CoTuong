@@ -145,14 +145,11 @@ class RoomController extends Controller
 
         $response = new StreamedResponse();
         $response->setCallback(function () use ($fen){
-
             echo 'data: ' . $fen . "\n\n";
-            //echo "retry: 100\n\n"; // no retry would default to 3 seconds.
-            //echo "data: Hello There\n\n";
             ob_flush();
             flush();
-            //sleep(1);
-            usleep(200000);
+            //usleep(200000);
+            usleep(2500000);
         });
 
         $response->headers->set('Content-Type', 'text/event-stream');

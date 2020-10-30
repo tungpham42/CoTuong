@@ -3,7 +3,7 @@
 <meta name="keywords" content="cờ tướng hay, xiangqi, co tuong, game co tuong online, co tuong 2 nguoi, cờ tướng, chơi cờ tướng online, choi co tuong online, choi co tuong, chơi cờ tướng online, chơi cờ tướng, cotuong, xiangqi, xiang qi" />
 <meta property="article:tag" content="xiangqi"/>
 <meta property="og:type" content="website">
-<meta property="og:image" content="{{ URL::to('/') }}/img/img_desc_logo_game.png">
+<meta property="og:image" content="https://cotuong.r.worldssl.net/img/img_desc_logo_game.png">
 <meta property="og:image:width" content="200" />
 <meta property="og:image:height" content="200" />
 <meta name="theme-color" content="#ff0028" />
@@ -16,13 +16,15 @@
 <meta charset="utf-8"/>
 <meta name="twitter:card" content="summary">
 <meta name="amp-script-src" content="sha384-016Lg_FhEARX67ofsqFGOf4dT7mkyKK_ISweYF_yY8CqDdvFt07YlZsZtJsEczwX">
-<link rel="apple-touch-icon" href="{{ URL::to('/') }}/img/app-icons/apple-touch-icon-iphone-game.png">
-<link rel="apple-touch-icon" sizes="76x76" href="{{ URL::to('/') }}/img/app-icons/apple-touch-icon-ipad-game.png">
-<link rel="apple-touch-icon" sizes="120x120" href="{{ URL::to('/') }}/img/app-icons/apple-touch-icon-iphone-retina-game.png">
-<link rel="apple-touch-icon" sizes="152x152" href="{{ URL::to('/') }}/img/app-icons/apple-touch-icon-ipad-retina-game.png">
-<link rel="icon" sizes="32x32" href="{{ URL::to('/') }}/img/favicon-32x32-game.png" />
+<link rel="apple-touch-icon" href="https://cotuong.r.worldssl.net/img/app-icons/apple-touch-icon-iphone-game.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://cotuong.r.worldssl.net/img/app-icons/apple-touch-icon-ipad-game.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://cotuong.r.worldssl.net/img/app-icons/apple-touch-icon-iphone-retina-game.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://cotuong.r.worldssl.net/img/app-icons/apple-touch-icon-ipad-retina-game.png">
+<link rel="icon" sizes="32x32" href="https://cotuong.r.worldssl.net/img/favicon-32x32-game.png" />
 <link rel="manifest" href="{{ URL::to('/') }}/manifest.webmanifest?v=1">
-<link rel="canonical" href="{{ URL::to('/').$canonicalUrl }}" />
+<link rel="canonical" href="{{ url()->full() }}" />
+<link rel="alternate" hreflang="vi" href="{{ url()->full() }}"/>
+<link rel="alternate" hreflang="en" href="{{ URL::to('/').$langUrl }}"/>
 <link rel="amphtml" href="{{ url()->full() }}" />
 <style amp-custom>
 @php

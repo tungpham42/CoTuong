@@ -39,13 +39,13 @@
             <input type="hidden" name="piecesUrl" id="piecesUrl" value="{{ URL::to('/') }}" />
             @include('amp.layout.partials.scripts')
             @yield('belowContent')
-            @if ( isset($board) )
+            @if ( !isset($board) )
             <p class="w-100 text-center mt-2">
-              <a style="color: white" id="share-board" class="mx-auto btn btn-success btn-lg pulse py-2"><i class="fad fa-share"></i> Chia sẻ bàn cờ</a>
+              <a style="color: white" id="share-board" class="mx-auto btn btn-success btn-lg pulse py-2" href="{{ URL::to('/amp/chia-se/') }}"><i class="fad fa-share"></i> Chia sẻ bàn cờ</a>
             </p>
             <script>
             $('#share-board').on('click', function(){
-              window.location.href = "{{ URL::to('/amp/chia-se/') }}/" + game.fen();
+              $(this).attr('href', $(this).attr('href') + '/' + game.fen());
             });
             </script>
             @endif

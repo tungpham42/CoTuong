@@ -1,6 +1,17 @@
 @extends('layout.gamelayout')
 @section('aboveContent')
 <h3 class="text-center my-2">Bàn cờ được chia sẻ</h3>
+<div class="dropup mx-auto text-center">
+  <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="levelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fal fa-trophy"></i> Chọn cấp độ bàn cờ
+  </button>
+  <div class="dropdown-menu" aria-labelledby="levelDropdown">
+    <a class="add-fen dropdown-item" href="{{ url('/chia-se-moi-choi') }}">Mới chơi</a>
+    <a class="add-fen dropdown-item" href="{{ url('/chia-se-de') }}">Dễ</a>
+    <a class="add-fen dropdown-item" href="{{ url('/chia-se-binh-thuong') }}">Bình thường</a>
+    <a class="add-fen dropdown-item" href="{{ url('/chia-se-kho') }}">Khó</a>
+  </div>
+</div>
 @endsection
 @section('belowContent')
 <p class="w-100 text-center mt-4">
@@ -163,5 +174,10 @@ $('#reset').on('click', function() {
   $('#game-over').removeClass('d-inline-block').addClass('d-none');
 });
 $('#switch').on('click', board.flip);
+$('.add-fen').each(function(){
+  $(this).on('click', function(){
+    $(this).attr('href', $(this).attr('href') + '/' + game.fen());
+  });
+});
 </script>
 @endsection
